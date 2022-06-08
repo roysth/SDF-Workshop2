@@ -12,10 +12,10 @@ import java.util.UUID;
  */
 public class BankAccount {
     // bank account
-    private String name ="";
+    private final String name;
     
     // this is a generated account id from the java util UUID class
-    private String acctId =  UUID.randomUUID()
+    private final String acctId =  UUID.randomUUID()
                                     .toString()
                                     .substring(0,8);
     // holds the bank acc balance
@@ -45,17 +45,9 @@ public class BankAccount {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+   
     public String getAcctId() {
         return acctId;
-    }
-
-    public void setAcctId(String acctId) {
-        this.acctId = acctId;
     }
 
     public float getBalance() {
@@ -130,7 +122,7 @@ public class BankAccount {
             System.err.print(e);
             throw new IllegalArgumentException("Invalid withdraw amount");
         }
-        return withdrawAmtF.floatValue();
+        return this.balance;
     }
     
     public void deposit(String depositAmt){
